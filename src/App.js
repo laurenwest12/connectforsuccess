@@ -6,7 +6,7 @@ import AllMentors from './Components/AllMentors';
 
 export default class App extends Component {
   state = {
-    show: true,
+    show: false,
     mentor: {
       firstName: 'Lauren',
       lastName: 'West',
