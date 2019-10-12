@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { HashRouter as Router, Route } from 'react-router-dom';
 import './App.css';
 
 import SingleMentor from './Components/SingleMentor';
@@ -21,11 +20,11 @@ export default class App extends Component {
   }
 
 
+
+
   render() {
     return (
-
       <div>
-
       {
         this.state.show ?
         <SingleMentor mentor={this.state.mentor} showAll={this.showAll} />
@@ -33,10 +32,6 @@ export default class App extends Component {
         <AllMentors showSingleMentor={this.showSingleMentor} />
       }
       </div>
-      // <Router>
-      //   <Route exact path="/" component={AllMentors} />
-      //   <Route path="/mentor/:id" component={SingleMentor} />
-      // </Router>
     );
   }
 }
