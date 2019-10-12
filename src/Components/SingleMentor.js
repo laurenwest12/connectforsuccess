@@ -7,7 +7,7 @@ class SingleMentor extends Component {
       <div className="singleMentorContainer">
         <img
           src="https://www.belr.com/wp-content/uploads/2017/06/avatar-placeholder-generic-1.jpg"
-          alt="mentor-image"
+          alt="mentor"
           className="singleMentorImage"
         ></img>
         <div className="singleMentorName">

@@ -12,6 +12,10 @@ class AllMentors extends Component {
     this.setState({mentors})
   }
 
+  arrayToList = (arr) => {
+    return arr.join(' ')
+  }
+
   render() {
 
   const filteredMentors = this.state.mentors.map((p, i) => {
@@ -20,10 +24,10 @@ class AllMentors extends Component {
           <h1>{p.firstName} {p.lastName}</h1>
           <p>Location: {p.location}</p>
           <p>Industry: {p.industry}</p>
-          <p>Skills: {p.skills}</p>
-          <p>Connection: {p.connection}</p>
-          <p>Days Available: {p.daysAvailable}</p>
-          <p>Times Available: {p.timesAvailable}</p>
+          <p>Skills: {this.arrayToList(p.skills)}</p>
+          <p>Connection: {this.arrayToList(p.connection)}</p>
+          <p>Days Available: {this.arrayToList(p.daysAvailable)}</p>
+          <p>Times Available: {this.arrayToList(p.timesAvailable)}</p>
         </div>
   })
 

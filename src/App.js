@@ -40,6 +40,13 @@ export default class App extends Component {
           alt="dress-for-success-logo"
           className="logo"
         ></img>
+        <div>
+          <h3>Location</h3>
+          <h3>Connection</h3>
+          <h3>Days</h3>
+          <h3>Times</h3>
+          <h3>Skills</h3>
+        </div>
         <button
           type="button"
           onClick={this.showAll}
