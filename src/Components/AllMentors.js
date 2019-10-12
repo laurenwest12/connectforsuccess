@@ -5,7 +5,8 @@ import ava from '../ava.jpg';
 class AllMentors extends Component {
   state = {
     mentors: [],
-    filters: []
+    filters: [],
+    submitted: false
   };
 
   componentDidMount() {
@@ -16,12 +17,48 @@ class AllMentors extends Component {
     return arr.join(' ');
   };
 
-  setFilters = () => {
-    console.log('hi');
+  setFilters = (filter) => {
+   this.setState({filters: [...this.state.filters, filter]})
   };
 
   filteredMentors = () => {
-    return this.state.mentors.map((p, i) => {
+
+
+    if (this.state.submitted) {
+      let checker = (arr, target) => target && target.every(v => arr.includes(v) );
+
+      let filtered = this.state.mentors.filter(mentor =>
+        { return checker(mentor.skills, this.state.filter) })
+
+      return filtered.map((p, i) => {
+        return (
+          <div className="mentor" key={i}>
+            <img src={ava} alt="mentor" />
+            <h1
+              onClick={() => {
+                this.props.showSingleMentor(p);
+              }}
+              className="mentorName"
+            >
+              {p.firstName} {p.lastName}
+            </h1>
+              <div className="header">Location: </div>
+              {' ' + p.location}<br></br>
+              <div className="header">Industry: </div>
+              {' ' + p.industry}<br></br>
+              <div className="header">Skills: </div>{' '}
+              {' ' + this.arrayToList(p.skills)}<br></br>
+              <div className="header">Connection: </div>{' '}
+              {' ' + this.arrayToList(p.connection)}<br></br>
+              <div className="header">Days Available: </div>{' '}
+              {' ' + this.arrayToList(p.daysAvailable)}<br></br>
+              <div className="header">Times Available: </div>{' '}
+              {' ' + this.arrayToList(p.timesAvailable)}
+          </div>
+        );
+      });
+    } else {
+    return mentors.map((p, i) => {
       return (
         <div className="mentor" key={i}>
           <img src={ava} alt="mentor" />
@@ -33,170 +70,30 @@ class AllMentors extends Component {
           >
             {p.firstName} {p.lastName}
           </h1>
-          <p>
             <div className="header">Location: </div>
-            {' ' + p.location}
-          </p>
-          <p>
+            {' ' + p.location}<br></br>
             <div className="header">Industry: </div>
-            {' ' + p.industry}
-          </p>
-          <p>
+            {' ' + p.industry}<br></br>
             <div className="header">Skills: </div>{' '}
-            {' ' + this.arrayToList(p.skills)}
-          </p>
-          <p>
+            {' ' + this.arrayToList(p.skills)}<br></br>
             <div className="header">Connection: </div>{' '}
-            {' ' + this.arrayToList(p.connection)}
-          </p>
-          <p>
+            {' ' + this.arrayToList(p.connection)}<br></br>
             <div className="header">Days Available: </div>{' '}
-            {' ' + this.arrayToList(p.daysAvailable)}
-          </p>
-          <p>
+            {' ' + this.arrayToList(p.daysAvailable)}<br></br>
             <div className="header">Times Available: </div>{' '}
             {' ' + this.arrayToList(p.timesAvailable)}
-          </p>
         </div>
       );
-    });
+    });}
   };
 
   render() {
+
+    console.log(this.state);
     return (
       <>
         <div id="filters">
-          <h3>Location</h3>
 
-          <h3>Connection</h3>
-          <label>
-            Casual
-            <input
-              type="checkbox"
-              onChange={() => {
-                this.setFilters('casual');
-              }}
-            />
-          </label>
-          <label>
-            Online
-            <input
-              type="checkbox"
-              onChange={() => {
-                this.setFilters('online');
-              }}
-            />
-          </label>
-          <label>
-            In-person
-            <input
-              type="checkbox"
-              onChange={() => {
-                this.setFilters('in-person');
-              }}
-            />
-          </label>
-          <label>
-            Ongoing
-            <input
-              type="checkbox"
-              onChange={() => {
-                this.setFilters('ongoing');
-              }}
-            />
-          </label>
-          <h3>Days</h3>
-          <label>
-            Monday
-            <input
-              type="checkbox"
-              onChange={() => {
-                this.setFilters('Monday');
-              }}
-            />
-          </label>
-          <label>
-            Tuesday
-            <input
-              type="checkbox"
-              onChange={() => {
-                this.setFilters('Tuesday');
-              }}
-            />
-          </label>
-          <label>
-            Wednesday
-            <input
-              type="checkbox"
-              onChange={() => {
-                this.setFilters('Wednesday');
-              }}
-            />
-          </label>
-          <label>
-            Thursday
-            <input
-              type="checkbox"
-              onChange={() => {
-                this.setFilters('Thursday');
-              }}
-            />
-          </label>
-          <label>
-            Friday
-            <input
-              type="checkbox"
-              onChange={() => {
-                this.setFilters('Friday');
-              }}
-            />
-          </label>
-          <label>
-            Saturday
-            <input
-              type="checkbox"
-              onChange={() => {
-                this.setFilters('Saturday');
-              }}
-            />
-          </label>
-          <label>
-            Sunday
-            <input
-              type="checkbox"
-              onChange={() => {
-                this.setFilters('Sunday');
-              }}
-            />
-          </label>
-          <h3>Times</h3>
-          <label>
-            Morning
-            <input
-              type="checkbox"
-              onChange={() => {
-                this.setFilters('morning');
-              }}
-            />
-          </label>
-          <label>
-            Afternoon
-            <input
-              type="checkbox"
-              onChange={() => {
-                this.setFilters('afternoon');
-              }}
-            />
-          </label>
-          <label>
-            Evening
-            <input
-              type="checkbox"
-              onChange={() => {
-                this.setFilters('evening');
-              }}
-            />
-          </label>
           <h3>Skills</h3>
           <label>
             Interview Prep
@@ -243,7 +140,7 @@ class AllMentors extends Component {
               }}
             />
           </label>
-          <input type="submit" />
+          <input type="submit" onClick={() => {this.setState({submitted: true})}}/>
         </div>
         <div className="mentors">{this.filteredMentors()}</div>
       </>
