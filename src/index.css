@@ -5,19 +5,19 @@ body {
     sans-serif;
 }
 
-/* code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
-} */
-
 .singleMentorContainer {
   text-align: center;
 }
 
 .singleMentorImage {
-  height: 200px;
-  width: 200px;
+  height: 300px;
+  width: 300px;
   border-radius: 50%;
+}
+
+.icon {
+  display: inline-block;
+  padding: 5px;
 }
 
 .singleMentorName {

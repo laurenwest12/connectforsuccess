@@ -14,7 +14,31 @@ class SingleMentor extends Component {
           {mentor.firstName.toUpperCase()} {mentor.lastName.toUpperCase()}
         </div>
         <div className="singleMentorLocation">{mentor.location}</div>
+        <i class="fa fa-linkedin" aria-hidden="true"></i>
         <div className="singleMentorBio">{mentor.bio}</div>
+
+        <div className="icon">
+          <ion-icon
+            name="logo-linkedin"
+            style={{
+              width: 75,
+              height: 75,
+              color: '#b32b33',
+              cursor: 'pointer'
+            }}
+          ></ion-icon>
+        </div>
+        <div className="icon">
+          <ion-icon
+            name="mail"
+            style={{
+              width: 75,
+              height: 75,
+              color: '#b32b33',
+              cursor: 'pointer'
+            }}
+          ></ion-icon>
+        </div>
       </div>
     );
   }
