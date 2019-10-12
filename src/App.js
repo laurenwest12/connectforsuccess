@@ -18,8 +18,6 @@ export default class App extends Component {
     this.setState({ show: false, mentor: {} });
   };
 
-
-
   render() {
     return (
       <div>
