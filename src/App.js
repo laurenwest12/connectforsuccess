@@ -6,7 +6,7 @@ import AllMentors from './Components/AllMentors';
 
 export default class App extends Component {
   state = {
-    show: true,
+    show: false,
     mentor: {
       firstName: 'Lauren',
       lastName: 'West',
@@ -29,6 +29,8 @@ export default class App extends Component {
   showAll = () => {
     this.setState({ show: false, mentor: [] });
   };
+
+
 
   render() {
     return (
