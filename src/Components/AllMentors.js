@@ -1,8 +1,23 @@
 import React, { Component } from 'react';
+import mentors from '../data.js'
 
 class AllMentors extends Component {
+
+  state = {
+    mentors: mentors
+  }
+
+
   render() {
-    return <h1>Hello World</h1>;
+
+console.log(this.state.mentors);
+
+
+    return (
+      <div>
+
+      </div>
+    );
   }
 }
 
