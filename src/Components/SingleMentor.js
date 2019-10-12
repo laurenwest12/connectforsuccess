@@ -29,15 +29,17 @@ class SingleMentor extends Component {
           ></ion-icon>
         </div>
         <div className="icon">
-          <ion-icon
-            name="mail"
-            style={{
-              width: 75,
-              height: 75,
-              color: '#b32b33',
-              cursor: 'pointer'
-            }}
-          ></ion-icon>
+          <a href={`mailto:${mentor.email}`}>
+            <ion-icon
+              name="mail"
+              style={{
+                width: 75,
+                height: 75,
+                color: '#b32b33',
+                cursor: 'pointer'
+              }}
+            ></ion-icon>
+          </a>
         </div>
       </div>
     );
