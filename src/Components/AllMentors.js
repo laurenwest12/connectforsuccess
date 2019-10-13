@@ -27,8 +27,9 @@ class AllMentors extends Component {
     if (this.state.submitted) {
       let checker = (arr, target) => target && target.every(v => arr.includes(v) );
 
-      let filtered = this.state.mentors.filter(mentor =>
-        { return checker(mentor.skills, this.state.filter) })
+      let filtered = this.state.mentors.filter(mentor => {
+        return checker(mentor.skills, this.state.filters)
+      })
 
       return filtered.map((p, i) => {
         return (
@@ -89,7 +90,6 @@ class AllMentors extends Component {
 
   render() {
 
-    console.log(this.state);
     return (
       <>
         <div id="filters">
